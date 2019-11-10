@@ -12,7 +12,6 @@ const pug = require('pug'); // Add pug
 //Create Database Connection
 const pgp = require('pg-promise')();
 
-
 //db config
 const dbConfig = {
 	host: '192.168.50.130',
