@@ -1,7 +1,7 @@
 // server.js
 
 const express = require('express'); // Add the express framework
-let app = express();
+const app = express();
 
 const bodyParser = require('body-parser'); // Add the body-parser tool
 app.use(bodyParser.json());              // Add support for JSON encoded bodies
@@ -21,8 +21,7 @@ const dbConfig = {
 	password: 'Appl3'
 };
 
-let db = pqp(dbConfig);
-
+let db = pgp(dbConfig);
 
 //sets pug as view engine
 app.set('view engine', 'pug');
