@@ -16,11 +16,7 @@ const pgp = require('pg-promise')();
 //db config
 const dbConfig = {
 	host: '192.168.50.130',
-<<<<<<< HEAD
-	port: 1000,
-=======
 	port: 5432,
->>>>>>> 1cf42ba19de766a482f40a058592e029516b8b15
 	database: 'traffic_db',
 	user: 'admin',
 	password: 'Appl3'
@@ -28,29 +24,10 @@ const dbConfig = {
 
 let db = pgp(dbConfig);
 
-
 //sets pug as view engine
 app.set('view engine', 'pug');
 app.use(express.static(__dirname + '/'));
 
-<<<<<<< HEAD
-
-
-
-
-app.get('/', function(req, res) {
-	res.render('pages/home',{
-	});
-});
-
-
-
-
-
-const hostname = '192.168.50.130';
-const port = 2048;
-app.listen(port, hostname);
-=======
 // home page
 app.get('/home', function(req, res) {
 	var query = ''; // select all locations and their latest reading
@@ -79,6 +56,4 @@ app.get('/location', function(req, res) {
 
 var port = 2048;
 app.listen(port);
->>>>>>> 1cf42ba19de766a482f40a058592e029516b8b15
 console.log('listening on port ' + port);
-
