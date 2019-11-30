@@ -11,8 +11,9 @@ body
             if data
                 each location in data
                     p
+                        - status = getStatus(location.volume);
                         a(href="location.html") #{location.name}
                         | : &nbsp
-                        span(class=location.status) #{location.status}
+                        span(class=status.class) #{status.message}
 
     include ../partials/footer.pug
