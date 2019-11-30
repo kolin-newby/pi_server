@@ -27,9 +27,12 @@ let db = pgp(dbConfig);
 app.set('view engine', 'pug');
 app.use(express.static(__dirname + '/'));
 
+//declare constants
+const REFRESH_INTERVAL = "10 minutes";
+
 // home page
 app.get('/home', function(req, res) {
-	var query = ''; // select all locations and their latest reading
+	var query = "SELECT l.loc_id name, l.loc_hours hours, d.volume_db volume, d.time time FROM data d LEFT JOIN locations l ON d.loc_id = l.loc_id WHERE d.time BETWEEN (NOW() - interval '" + REFRESH_INTERVAL + "') AND NOW();"; // select all locations and their latest reading
 	db.any(query)
 		.then(function (location_status) {
 			res.render('pages/home', {
