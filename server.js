@@ -14,7 +14,7 @@ const pgp = require('pg-promise')();
 
 //db config
 const dbConfig = {
-	host: '192.168.50.130',
+	host: 'localhost',
 	port: 5432,
 	database: 'traffic_db',
 	user: 'admin',
