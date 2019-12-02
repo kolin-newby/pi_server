@@ -11,7 +11,8 @@ body
             form(method='POST' action='/select_location')
                 if data
                     each location in data
-                        - var status = getStatus(location.volume);
+                        if location.volume
+                            - var status = getStatus(location.volume);
                         button(type='submit' name='location' value=location.name) #{location.name}
                         | : &nbsp
                         span(class=status.class) #{status.message}
