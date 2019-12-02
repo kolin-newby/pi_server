@@ -49,6 +49,7 @@ app.get('/home', function(req, res) {
 		})
 });
 
+// form to select a location to view
 app.post('/select_location', function(req, res) {
 	var location_to_view = req.body.location;
 	res.redirect('/location', {
