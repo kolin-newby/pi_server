@@ -44,15 +44,23 @@ app.get('/home', function(req, res) {
 			console.log('error '+ err);
 			res.render('pages/home', {
 				page_title: 'Home',
-				data: '',
+				data: ''
 			})
 		})
+});
+
+app.post('/select_location', function(req, res) {
+	var location_to_view = req.body.location;
+	res.redirect('/location', {
+		location: location_to_view
+	});
 });
 
 // location page 
 app.get('/location', function(req, res) {
 	res.render('pages/location',{
-		page_title:"Location Name"
+		page_title:"Location Name",
+		location: location
 	});
 });
 
