@@ -8,17 +8,14 @@ body
         div.page
             h3 Locations
             br
-            form(method='POST' action='/select_location')
+            form(method='POST', action='/select_location')
                 if data
                     each location in data
                         if location.volume
                             - var status = getStatus(location.volume);
-                        button(type='submit' name='location' value=location.name) #{location.name}
+                        button(type='submit', name='location', value=location.name) #{location.name}
                         | &nbsp : &nbsp
                         span(class=status.class) #{status.message}
                         br
-    
-    script
-        include ../../resources/js/script.js
 
     include ../partials/footer.pug
