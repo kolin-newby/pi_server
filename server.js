@@ -53,7 +53,7 @@ app.get('/', function(req, res) {
 // form to select a location to view
 app.post('/select_location', function(req, res) {
 	var location_to_view = req.body.location;
-	res.render('/location', {
+	res.render('pages/location', {
 		location: location_to_view
 	});
 });
