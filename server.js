@@ -33,7 +33,10 @@ const REFRESH_INTERVAL = "30 minutes";
 // home page
 app.get('/', function(req, res) {
 	//var query = 'SELECT loc_id AS name FROM locations;';
-	var query = "SELECT DISTINCT ON (name) name, hours, volume FROM (SELECT l.loc_desc AS name, l.hours AS hours, d.volume_db AS volume FROM locations l LEFT JOIN data d ON d.loc_id = l.loc_id AND d.time BETWEEN (NOW() - interval '" + REFRESH_INTERVAL + "') AND NOW() ORDER BY d.time DESC);"; // select all locations and their latest reading
+	// select all locations and their latest reading
+	var query = "SELECT DISTINCT ON (l.loc_desc) l.loc_desc AS name, l.hours AS hours, d.volume_db AS volume ";
+	query += "FROM locations l LEFT JOIN data d ON d.loc_id = l.loc_id ";
+	query += "AND d.time BETWEEN (NOW() - interval '" + REFRESH_INTERVAL + "') AND NOW() ORDER BY l.loc_desc, d.time DESC;";
 	db.any(query)
 		.then(function (location_status) {
 			res.render('pages/home', {
