@@ -16,7 +16,7 @@ body
                                 var status = getStatus(location.volume);
                         button(type='submit', name='location', value=location.name) #{location.name}
                         | &nbsp : &nbsp
-                        span(class=status.class) #{status.message}
+                        span(class=status.status_class) #{status.status_message}
                         br
 
     include ../partials/footer.pug
