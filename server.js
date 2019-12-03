@@ -31,7 +31,7 @@ app.use(express.static(__dirname + '/'));
 const REFRESH_INTERVAL = "10 minutes";
 
 // home page
-app.get('/home', function(req, res) {
+app.get('/', function(req, res) {
 	var query = "SELECT l.loc_id name, l.loc_hours hours, d.volume_db volume, d.time time FROM data d LEFT JOIN locations l ON d.loc_id = l.loc_id WHERE d.time BETWEEN (NOW() - interval " + REFRESH_INTERVAL + ") AND NOW();"; // select all locations and their latest reading
 	db.any(query)
 		.then(function (location_status) {
@@ -57,10 +57,10 @@ app.post('/select_location', function(req, res) {
 	});
 });
 
-// location page 
+// location page
 app.get('/location', function(req, res) {
 	res.render('pages/location',{
-		page_title:"Location Name",
+		page_title: location,
 		location: location
 	});
 });
