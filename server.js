@@ -28,12 +28,12 @@ app.set('view engine', 'pug');
 app.use(express.static(__dirname + '/'));
 
 //declare constants
-const REFRESH_INTERVAL = "90 minutes";
+const REFRESH_INTERVAL = "10 minutes";
 
 // home page
 app.get('/', function(req, res) {
 	//var query = 'SELECT loc_id AS name FROM locations;';
-	var query = "SELECT DISTINCT ON (l.loc_desc) l.loc_desc AS name, l.loc_hours AS hours, d.volume_db AS volume FROM locations l LEFT JOIN data d ON d.loc_id = l.loc_id WHERE d.time BETWEEN (NOW() - interval '" + REFRESH_INTERVAL + "') AND NOW();"; // select all locations and their latest reading
+	var query = "SELECT DISTINCT ON (l.loc_desc) l.loc_desc AS name, l.loc_hours AS hours, d.volume_db AS volume FROM locations l LEFT JOIN data d ON d.loc_id = l.loc_id AND d.time BETWEEN (NOW() - interval '" + REFRESH_INTERVAL + "') AND NOW();"; // select all locations and their latest reading
 	db.any(query)
 		.then(function (location_status) {
 			res.render('pages/home', {
@@ -54,6 +54,7 @@ app.get('/', function(req, res) {
 app.post('/select_location', function(req, res) {
 	var location_to_view = req.body.location;
 	res.render('pages/location', {
+		page_title: location_to_view,
 		location: location_to_view
 	});
 });
