@@ -32,8 +32,8 @@ const REFRESH_INTERVAL = "30 minutes";
 
 // home page
 app.get('/', function(req, res) {
-	var query = 'SELECT loc_id AS name FROM locations;';
-	//var query = "SELECT l.loc_desc AS name, l.loc_hours AS hours, d.volume_db AS volume FROM locations l LEFT JOIN data d ON d.loc_id = l.loc_id WHERE d.time BETWEEN (NOW() - interval '" + REFRESH_INTERVAL + "') AND NOW();"; // select all locations and their latest reading
+	//var query = 'SELECT loc_id AS name FROM locations;';
+	var query = "SELECT l.loc_desc AS name, l.loc_hours AS hours, d.volume_db AS volume FROM locations l LEFT JOIN data d ON d.loc_id = l.loc_id WHERE d.time BETWEEN (NOW() - interval '" + REFRESH_INTERVAL + "') AND NOW();"; // select all locations and their latest reading
 	db.any(query)
 		.then(function (location_status) {
 			res.render('pages/home', {
