@@ -39,6 +39,7 @@ app.get('/', function(req, res) {
 	query += "FROM locations l LEFT JOIN data d ON d.loc_id = l.loc_id ";
 	query += "WHERE d.time BETWEEN (NOW() - interval '" + REFRESH_INTERVAL + "') AND NOW() ";
 	query += "ORDER BY l.loc_desc, d.time DESC;";
+	console.log(query);
 	db.any(query)
 		.then(function (location_status) {
 			res.render('pages/home', {
