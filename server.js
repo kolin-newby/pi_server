@@ -42,6 +42,7 @@ app.get('/', function(req, res) {
 	console.log(query);
 	db.any(query)
 		.then(function (location_status) {
+			console.log(location_status);
 			res.render('pages/home', {
 				page_title: 'Home',
 				data: location_status
