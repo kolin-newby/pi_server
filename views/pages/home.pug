@@ -15,4 +15,4 @@ body
                             - var status = getStatus(location.volume);
                         button(type='submit' name='location' value=location.name) #{location.name}
                         | : &nbsp
-                        span(class= status.class) #{status.message}
+                        span #{status.message}
