@@ -12,7 +12,8 @@ body
                 if data
                     each location in data
                         if location.volume
-                            - var status = getStatus(location.volume);
+                            script
+                                var status = getStatus(location.volume);
                         button(type='submit', name='location', value=location.name) #{location.name}
                         | &nbsp : &nbsp
                         span(class=status.class) #{status.message}
