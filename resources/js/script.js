@@ -1,7 +1,7 @@
 // script.js
 
-const QUIET_CUTOFF = 0;
-const BUSY_CUTOFF = 0;
+const QUIET_CUTOFF = 100;
+const BUSY_CUTOFF = 200;
 
 function getStatus (volume) {
     

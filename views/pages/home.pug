@@ -13,6 +13,7 @@ body
                     each location in data
                         if location.volume
                             - var status = getStatus(location.volume);
+                        p #{location.name}
                         button(type='submit' name='location' value=location.name) #{location.name}
                         | : &nbsp
                         //- span(class=status.class) #{status.message}
