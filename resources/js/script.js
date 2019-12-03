@@ -25,5 +25,5 @@ function getStatus (volume) {
         }
     }
 
-    return {class: status_class, message: status_message};
+    return [status_class, status_message];
 }
