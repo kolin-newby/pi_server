@@ -16,9 +16,11 @@ body
                             var status_class = 'color: black';
                             var status_message = 'No Data';
                             var status = [status_class, status_message];
-                            
+
                         if location.volume
                             -
+                                var volume = location.volume;
+                                
                                 const QUIET_CUTOFF = 100;
                                 const BUSY_CUTOFF = 200;
 
