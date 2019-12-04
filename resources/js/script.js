@@ -3,7 +3,7 @@
 const QUIET_CUTOFF = 100;
 const BUSY_CUTOFF = 200;
 
-function getStatus (volume) {
+function getStatus (volume, hours) {
     
     var status_class = 'color: black;';
     var status_message = 'No Data';
