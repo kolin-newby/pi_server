@@ -32,7 +32,6 @@ const REFRESH_INTERVAL = "120 minutes";
 
 // home page
 app.get('/', function(req, res) {
-	//var query = 'SELECT loc_id AS name FROM locations;';
 	// select all locations and their latest reading
 	var query = "SELECT DISTINCT ON (l.loc_desc) l.loc_desc AS name, ";
 	query += "l.loc_hours AS hours, d.volume_db AS volume ";
@@ -68,6 +67,7 @@ app.post('/select_location', function(req, res) {
 
 // location page
 app.get('/location', function(req, res) {
+	var query = "";
 	res.render('pages/location',{
 		page_title: location,
 		location: location

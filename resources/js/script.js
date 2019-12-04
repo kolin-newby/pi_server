@@ -29,4 +29,4 @@ function getStatus (volume) {
     console.log("Message: "+status_message)
 
     return [status_class, status_message];
-}
+};
