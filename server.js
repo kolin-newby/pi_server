@@ -34,7 +34,7 @@ const REFRESH_INTERVAL = "120 minutes";
 app.get('/', function(req, res) {
 	// select all locations and their latest reading
 	var query = "SELECT DISTINCT ON (l.loc_desc) l.loc_desc AS name, ";
-	query += "l.loc_hours AS hours, d.volume_db AS volume ";
+	query += "l.loc_hours AS hours, d.volume_db AS volume, d.time AS time ";
 	query += "FROM locations l LEFT JOIN data d ON d.loc_id = l.loc_id ";
 	query += "ORDER BY l.loc_desc, d.time DESC;";
 	console.log(query);
