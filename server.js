@@ -26,7 +26,6 @@ let db = pgp(dbConfig);
 //sets pug as view engine
 app.set('view engine', 'pug');
 app.use(express.static(__dirname + '/'));
-app.use("/javascripts", express.static("../resources/js/script.js"));
 
 //declare constants
 const REFRESH_INTERVAL = "120 minutes";
