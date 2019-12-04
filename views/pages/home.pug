@@ -11,6 +11,7 @@ body
             form(method='POST', action='/select_location')
                 if data
                     each location in data
+                        - console.log(location.name);
                         if location.volume
                             -
                                 const QUIET_CUTOFF = 100;
@@ -40,7 +41,7 @@ body
                                 console.log("Message: "+status_message)
 
                                 return [status_class, status_message];
-                                
+
                         button(type='submit', name='location', value=location.name) #{location.name}
                         | &nbsp : &nbsp
                         span(style=status[0]) #{status[1]}
