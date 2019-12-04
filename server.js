@@ -87,7 +87,6 @@ app.post('/select_location', function(req, res) {
 
 // location page
 app.get('/location', function(req, res) {
-	var location_to_view = req.body.location;
 	var location_query = "SELECT loc_id AS id, loc_desc AS name, loc_hours AS hours ";
 	location_query += "FROM locations WHERE loc_id = " + location_to_view + ";";
 	var data_query = "SELECT d.volume_db AS volume, d.time FROM data d FULL JOIN locations l ";
