@@ -5,6 +5,8 @@ const BUSY_CUTOFF = 200;
 
 function getStatus (volume, hours) {
     
+    console.log("script.js is connected");
+    
     var status_class = 'color: black;';
     var status_message = 'No Data';
 
