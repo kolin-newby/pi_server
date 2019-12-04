@@ -67,6 +67,7 @@ app.post('/select_location', function(req, res) {
 // location page
 app.get('/location', function(req, res) {
 	var query = "";
+	console.log(query);
 	res.render('pages/location',{
 		page_title: location,
 		location: location

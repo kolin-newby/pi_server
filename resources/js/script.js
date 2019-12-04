@@ -3,7 +3,7 @@
 const QUIET_CUTOFF = 100;
 const BUSY_CUTOFF = 200;
 
-function getStatus (volume, hours) {
+var getStatus = function (volume, hours) {
     
     console.log("script.js is connected");
     
@@ -27,8 +27,8 @@ function getStatus (volume, hours) {
         }
     }
 
-    console.log("Class: "+status_class)
-    console.log("Message: "+status_message)
+    console.log("Class: "+status_class);
+    console.log("Message: "+status_message);
 
     return [status_class, status_message];
 };
