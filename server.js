@@ -33,7 +33,7 @@ const REFRESH_INTERVAL = "120 minutes";
 // home page
 app.get('/', function(req, res) {
 	// select all locations and their latest reading
-	var query = "SELECT DISTINCT ON (l.loc_desc) l.loc_desc AS name, ";
+	var query = "SELECT DISTINCT ON (l.loc_id) l.loc_id AS id, l.loc_desc AS name, ";
 	query += "l.loc_hours AS hours, d.volume_db AS volume, d.time AS time ";
 	query += "FROM locations l LEFT JOIN data d ON d.loc_id = l.loc_id ";
 	query += "ORDER BY l.loc_desc, d.time DESC;";
@@ -58,20 +58,61 @@ app.get('/', function(req, res) {
 // form to select a location to view
 app.post('/select_location', function(req, res) {
 	var location_to_view = req.body.location;
-	res.render('pages/location', {
-		page_title: location_to_view,
-		location: location_to_view
-	});
+	var location_query = "SELECT loc_id AS id, loc_desc AS name, loc_hours AS hours ";
+	location_query += "FROM locations WHERE loc_id = " + location_to_view + ";";
+	var data_query = "SELECT d.volume_db AS volume, d.time FROM data d FULL JOIN locations l ";
+	data_query += "ON d.loc_id = l.loc_id;";
+	db.task('get-everything', task => {
+		return task.batch([
+			task.any(location_query),
+			task.any(data_query)
+		]);
+	})
+	.then(info => {
+		res.render('pages/location', {
+			page_title: location_to_view,
+			location: info[0],
+			data: info[1]
+		})
+	})
+	.catch(error => {
+		console.log(error);
+		res.render('pages/location',{
+			page_title: location_to_view,
+			location: '',
+			data: ''
+		})
+	})
 });
 
 // location page
 app.get('/location', function(req, res) {
-	var query = "";
-	console.log(query);
-	res.render('pages/location',{
-		page_title: location,
-		location: location
-	});
+	var location_to_view = req.body.location;
+	var location_query = "SELECT loc_id AS id, loc_desc AS name, loc_hours AS hours ";
+	location_query += "FROM locations WHERE loc_id = " + location_to_view + ";";
+	var data_query = "SELECT d.volume_db AS volume, d.time FROM data d FULL JOIN locations l ";
+	data_query += "ON d.loc_id = l.loc_id;";
+	db.task('get-everything', task => {
+		return task.batch([
+			task.any(location_query),
+			task.any(data_query)
+		]);
+	})
+	.then(info => {
+		res.render('pages/location', {
+			page_title: location_to_view,
+			location: info[0],
+			data: info[1]
+		})
+	})
+	.catch(error => {
+		console.log(error);
+		res.render('pages/location',{
+			page_title: location_to_view,
+			location: '',
+			data: ''
+		})
+	})
 });
 
 var port = 2048;

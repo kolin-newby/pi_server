@@ -8,13 +8,10 @@ body
         div.page
             h3 Locations
             br
-            button(type="button" onclick="testScript()") Test Script
-            br
             form(method='POST', action='/select_location')
                 if data
                     each location in data
-                        script.
-                            testScript();
+                        -
                             console.log(location.name);
                             var status_class = 'color: black';
                             var status_message = 'No Data';
@@ -47,7 +44,7 @@ body
 
                                 status = [status_class, status_message];
 
-                        button(type='submit', name='location', value=location.name) #{location.name}
+                        button(type='submit', name='location', value=location.id) #{location.name}
                         | &nbsp : &nbsp
                         span(style=status[0]) #{status[1]}
                         br
