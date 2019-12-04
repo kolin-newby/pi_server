@@ -11,7 +11,8 @@ body
             form(method='POST', action='/select_location')
                 if data
                     each location in data
-                        - let script = ['color: black', 'No Data'];
+                        script.
+                            let script = ['color: black', 'No Data'];
                         if location.volume
                             script.
                                 status = getStatus(location.volume, location.hours);
