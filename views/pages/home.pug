@@ -12,7 +12,7 @@ body
                 if data
                     each location in data
                         script.
-                            let script = ['color: black', 'No Data'];
+                            let status = ['color: black', 'No Data'];
                         if location.volume
                             script.
                                 status = getStatus(location.volume, location.hours);
