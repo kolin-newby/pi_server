@@ -13,7 +13,7 @@ body
             form(method='POST', action='/select_location')
                 if data
                     each location in data
-                        -
+                        script.
                             testScript();
                             console.log(location.name);
                             var status_class = 'color: black';
