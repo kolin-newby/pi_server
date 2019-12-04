@@ -75,8 +75,8 @@ app.post('/select_location', function(req, res) {
 			data: info[1]
 		})
 	})
-	.catch(error => {
-		console.log(error);
+	.catch(err => {
+		console.log(err);
 		res.render('pages/location',{
 			page_title: location_to_view,
 			location: '',
@@ -105,8 +105,8 @@ app.get('/location', function(req, res) {
 			data: info[1]
 		})
 	})
-	.catch(error => {
-		console.log(error);
+	.catch(err => {
+		console.log(err);
 		res.render('pages/location',{
 			page_title: location_to_view,
 			location: '',
