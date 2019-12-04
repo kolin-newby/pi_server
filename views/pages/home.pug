@@ -12,7 +12,8 @@ body
                 if data
                     each location in data
                         if location.volume
-                            - let status = getStatus(location.volume, location.hours);
+                            script.
+                                let status = getStatus(location.volume, location.hours);
                         button(type='submit', name='location', value=location.name) #{location.name}
                         | &nbsp : &nbsp
                         span(style=status[0]) #{status[1]}
