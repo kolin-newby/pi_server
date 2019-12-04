@@ -32,3 +32,8 @@ var getStatus = function (volume, hours) {
 
     return [status_class, status_message];
 };
+
+var testScript = function() {
+    console.log("Script is working");
+    return ;
+}
