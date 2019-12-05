@@ -69,12 +69,12 @@ app.post('/select_location', function(req, res) {
 	//console.log("Location: ", location_to_view, "\n");
 	var location_query = "SELECT loc_id AS id, loc_desc AS name, loc_hours AS hours ";
 	location_query += "FROM locations WHERE loc_id = '" + location_to_view + "';";
-	var data_query = "SELECT volume_db AS volume, time FROM data d ";
+	var data_query = "SELECT volume_db AS volume, time FROM data ";
 	data_query += "WHERE loc_id = '" + location_to_view;
 	data_query += "' WHERE time > (NOW() - interval '3 weeks') ";
 	data_query += "ORDER BY time ASC;";
 	//console.log(location_query, "\n");
-	//console.log(data_query, "\n");
+	console.log(data_query, "\n");
 	db.task('get-everything', task => {
 		return task.batch([
 			task.any(query),
