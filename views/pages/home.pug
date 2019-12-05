@@ -12,12 +12,7 @@ body
                 name: '#{display_location.name}',
                 hours: '#{display_location.hours}'
             };
-            var display_data = [];
-            for (var index = 0; index < #{entry_count}; index++) {
-                var entry = '#{display_data[${index}]}';
-                console.log(entry);
-                display_data.push(entry);
-            }
+            var display_data = '#{display_data}';
 
             console.log(#{entry_count});
             console.log(display_location);
