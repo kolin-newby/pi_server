@@ -2,8 +2,13 @@
 include ../partials/header.pug
 
 body
+    if display_location
+        - console.log(display_location);
     script(type='text/javascript').
-        var display_location = !{JSON.stringify(display_location)};
+        var display_location = {
+            name: '#{display_location.name}',
+
+        };
         var display_table = !{JSON.stringify(display_data)};
 
         console.log(display_location);
