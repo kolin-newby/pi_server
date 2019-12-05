@@ -57,21 +57,7 @@ app.get('/', function(req, res) {
 
 // form to select a location to view
 app.post('/select_location', function(req, res) {
-	var location_to_view = req.body.location;
-	res.render('pages/location', {
-		page_title: location_to_view,
-		location: location_to_view
-	});
-});
-
-// location page
-app.get('/location', function(req, res) {
-	var query = "";
-	console.log(query);
-	res.render('pages/location',{
-		page_title: location,
-		location: location
-	});
+	
 });
 
 var port = 2048;
