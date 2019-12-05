@@ -3,9 +3,6 @@ include ../partials/header.pug
 
 body
     if display_data
-        -
-            var entry_count = display_data.length;
-            console.log("Entry count: ", entry_count);
         script(type='text/javascript').
             var display_location = {
                 id: '#{display_location.id}',
@@ -21,12 +18,11 @@ body
                 display_data.push(entry);
             }
 
-            console.log(#{entry_count});
             console.log(display_location);
             console.log(display_data);
             
-            if (display_location && display_data) {
-                alert('working');
+            if (display_location && display_data)
+            {
                 const one_hour = 60 * 60 * 1000;
                 var current_date = new Date(Date.now());
                 console.log("Current Date: ", current_date.toUTCString());
