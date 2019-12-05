@@ -46,37 +46,6 @@ app.get('/', function(req, res) {
 	db.any(query)
 		.then(function (location_status) {
 			console.log(location_status);
-			
-			var statuses = {};
-
-			for (var location in location_status) {
-
-				var status_class = 'color: black;';
-				var status_message = 'No Data';
-
-				// if closed()
-
-				if (location.volume) {
-					if (location.volume < QUIET_CUTOFF) {
-						status_class = 'color: blue;';
-						status_message = 'Quiet';
-					}
-					else if (location.volume > BUSY_CUTOFF) {
-						status_class = 'color: red;';
-						status_message = 'Busy';
-					}
-					else {
-						status_class = 'color: purple;';
-						status_message = 'Normal';
-					}
-				}
-
-				console.log("Class: "+status_class);
-				console.log("Message: "+status_message);
-
-				statuses[location.id] = [status_class, status_message];
-			}
-
 			res.render('pages/home', {
 				page_title: 'Home',
 				data: location_status,
