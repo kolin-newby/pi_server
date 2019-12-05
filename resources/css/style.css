@@ -5,6 +5,8 @@
 }
 
 .display_table {
-    padding: 10px;
-    border: 1px solid black;
+    table, th {
+        padding: 10px;
+        border: 1px solid black;
+    }
 }
