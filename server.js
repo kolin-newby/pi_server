@@ -91,7 +91,7 @@ app.post('/select_location', function(req, res) {
 	})
 	.catch(err => {
 		console.log(err);
-		res.render('pages/location',{
+		res.render('pages/home',{
 			page_title: 'Home',
 			data: '',
 			display_location: '',
