@@ -327,8 +327,9 @@ body
                                     data_date = new Date(display_data[data_counter1].time);
                                     console.log('1: ', data_counter1, data_date);
                                 }
-                                one_week_past_volume = (data_date < one_week_past + one_hour) ? display_data[data_counter1].volume : null;
-                                console.log(one_week_past + one_hour);
+                                one_week_past.setTime(one_week_past.getTime() + one_hour);
+                                one_week_past_volume = (data_date < one_week_past) ? display_data[data_counter1].volume : null;
+                                console.log(one_week_past);
                                 console.log('1 Week Volume: ', one_week_past_volume);
 
                                 data_date = new Date(display_data[data_counter2].time);
@@ -337,7 +338,8 @@ body
                                     data_date = new Date(display_data[data_counter2].time);
                                     console.log('2: ', data_counter2, data_date);
                                 }
-                                two_week_past_volume = (data_date < two_week_past + one_hour) ? display_data[data_counter2].volume : null;
+                                two_week_past.setTime(two_week_past.getTime() + one_hour);
+                                two_week_past_volume = (data_date < two_week_past) ? display_data[data_counter2].volume : null;
                                 console.log('2 Week Volume: ', two_week_past_volume);
 
                                 if (one_week_past_volume && two_week_past_volume) {
@@ -366,9 +368,6 @@ body
                                 }
                                 console.log('Color: ', color);
                                 cell.style.backgroundColor = color;
-
-                                one_week_past.setTime(one_week_past.getTime() + one_hour);
-                                two_week_past.setTime(two_week_past.getTime() + one_hour);
 
                                 console.log('1 Week Past: ', one_week_past);
                                 console.log('2 Week Past: ', two_week_past);
