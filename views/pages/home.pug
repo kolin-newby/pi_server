@@ -47,6 +47,8 @@ body
                 if data
                     each location in data
                         -
+                            console.log("Location: ", location.name)
+
                             const QUIET_CUTOFF = 100;
                             const BUSY_CUTOFF = 200;
                             
@@ -65,16 +67,16 @@ body
                                     status_message = 'Busy';
                                 }
                                 else {
-                                    status_class = 'color: yellow;';
+                                    status_class = 'color: purple;';
                                     status_message = 'Normal';
                                 }
                             }
 
-                            console.log("Class: "+status_class);
-                            console.log("Message: "+status_message);
+                            console.log("Class: ", status_class);
+                            console.log("Message: ", status_message);
 
                             var status = [status_class, status_message];
-                            
+
                         button(type='submit', name='location', value=location.name) #{location.name}
                         | &nbsp : &nbsp
                         span(style=status[0]) #{status[1]}
