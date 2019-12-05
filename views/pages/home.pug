@@ -263,84 +263,84 @@ body
                         td#Sat9pm
                         td#Sat10pm
                         td#Sat11pm
-            script.
-                const one_hour = 60 * 60 * 1000;
-                var current_date = new Date(Date.now());
-                console.log("Current Date: ", current_date.toUTCString());
-                var thisWeek = new Date(current_date.getFullYear(), current_date.getMonth(), current_date.getDate() - current_date.getDay(), 0, 0, 0, 0);
-                console.log("Beginning of this week: ", thisWeek.toUTCString());
-                var one_week_past = new Date(thisWeek.getTime());
-                one_week_past.setDate(thisWeek.getDate() - 7);
-                var two_week_past = new Date(thisWeek.getTime());
-                two_week_past.setDate(thisWeek.getDate() - 14);
-                console.log("Beginning of 1 week past: ", one_week_past.toUTCString());
-                console.log("Beginning of 2 weeks past: ", two_week_past.toUTCString());
+    script.
+        const one_hour = 60 * 60 * 1000;
+        var current_date = new Date(Date.now());
+        console.log("Current Date: ", current_date.toUTCString());
+        var thisWeek = new Date(current_date.getFullYear(), current_date.getMonth(), current_date.getDate() - current_date.getDay(), 0, 0, 0, 0);
+        console.log("Beginning of this week: ", thisWeek.toUTCString());
+        var one_week_past = new Date(thisWeek.getTime());
+        one_week_past.setDate(thisWeek.getDate() - 7);
+        var two_week_past = new Date(thisWeek.getTime());
+        two_week_past.setDate(thisWeek.getDate() - 14);
+        console.log("Beginning of 1 week past: ", one_week_past.toUTCString());
+        console.log("Beginning of 2 weeks past: ", two_week_past.toUTCString());
 
-                var table = document.getElementById('display_table');
-                var data_counter1 = 0, data_counter2 = 0;
-                var data_date = new Date();
-                var avg_volume = 0;
+        var table = document.getElementById('display_table');
+        var data_counter1 = 0, data_counter2 = 0;
+        var data_date = new Date();
+        var avg_volume = 0;
 
-                const min_volume = 100;
-                const max_volume = 300;
-                const white_volume = (min_volume + max_volume) / 2;
-                const interval = (max_volume - min_volume) / 32;
-                const hex_values = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'];
+        const min_volume = 100;
+        const max_volume = 300;
+        const white_volume = (min_volume + max_volume) / 2;
+        const interval = (max_volume - min_volume) / 32;
+        const hex_values = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'];
 
-                var color_value_index, color;
+        var color_value_index, color;
 
-                for (var row in table)
-                {
-                    for (var cell in row)
-                    {
-                        var one_week_past_volume;
-                        var two_week_past_volume;
-                        
-                        data_date = new Date(display_data[data_counter1]);
-                        while (data_date < one_week_past) {
-                            data_counter1++;
-                            data_date = new Date(display_data[data_counter1]);
-                        }
-                        one_week_past_volume = (data_date < one_week_past + one_hour) ? display_data[data_counter1] : null;
-
-                        data_date = new Date(display_data[data_counter2]);
-                        while (data_date < two_week_past) {
-                            data_counter2++;
-                            data_date = new Date(display_data[data_counter2]);
-                        }
-                        two_week_past_volume = (data_date < two_week_past + one_hour) ? display_data[data_counter2] : null;
-
-                        if (one_week_past_volume && two_week_past_volume) {
-                            avg_volume = (one_week_past_volume + two_week_past_volume) / 2;
-                        }
-                        else if (one_week_past_volume) {
-                            avg_volume = one_week_past_volume;
-                        }
-                        else if (two_week_past_volume) {
-                            avg_volume = two_week_past_volume;
-                        }
-                        else {
-                            avg_volume = white_volume;
-                        }
-
-                        color = '#FFFFFF';
-
-                        if (avg_volume < white_volume)
-                        {
-                            color_value_index = parseInt((avg_volume - min_volume) / interval);
-                            color = '#' + hex_values[color_value_index] + hex_values[color_value_index] + 'FF' + hex_values[color_value_index] + hex_values[color_value_index];
-                        }
-                        else if (avg_volume > white_volume)
-                        {
-                            color_value_index = parseInt((max_volume - avg_volume) / interval);
-                            color = '#FF' + hex_values[color_value_index] + hex_values[color_value_index] + hex_values[color_value_index] + hex_values[color_value_index];
-                        }
-
-                        cell.style.backgroundColor = color;
-
-                        one_week_past.setTime(one_week_past.getTime() + one_hour);
-                        two_week_past.setTime(two_week_past.getTime() + one_hour);
-                    }
+        for (var row in table)
+        {
+            for (var cell in row)
+            {
+                var one_week_past_volume;
+                var two_week_past_volume;
+                
+                data_date = new Date(display_data[data_counter1]);
+                while (data_date < one_week_past) {
+                    data_counter1++;
+                    data_date = new Date(display_data[data_counter1]);
                 }
+                one_week_past_volume = (data_date < one_week_past + one_hour) ? display_data[data_counter1] : null;
+
+                data_date = new Date(display_data[data_counter2]);
+                while (data_date < two_week_past) {
+                    data_counter2++;
+                    data_date = new Date(display_data[data_counter2]);
+                }
+                two_week_past_volume = (data_date < two_week_past + one_hour) ? display_data[data_counter2] : null;
+
+                if (one_week_past_volume && two_week_past_volume) {
+                    avg_volume = (one_week_past_volume + two_week_past_volume) / 2;
+                }
+                else if (one_week_past_volume) {
+                    avg_volume = one_week_past_volume;
+                }
+                else if (two_week_past_volume) {
+                    avg_volume = two_week_past_volume;
+                }
+                else {
+                    avg_volume = white_volume;
+                }
+
+                color = '#FFFFFF';
+
+                if (avg_volume < white_volume)
+                {
+                    color_value_index = parseInt((avg_volume - min_volume) / interval);
+                    color = '#' + hex_values[color_value_index] + hex_values[color_value_index] + 'FF' + hex_values[color_value_index] + hex_values[color_value_index];
+                }
+                else if (avg_volume > white_volume)
+                {
+                    color_value_index = parseInt((max_volume - avg_volume) / interval);
+                    color = '#FF' + hex_values[color_value_index] + hex_values[color_value_index] + hex_values[color_value_index] + hex_values[color_value_index];
+                }
+
+                cell.style.backgroundColor = color;
+
+                one_week_past.setTime(one_week_past.getTime() + one_hour);
+                two_week_past.setTime(two_week_past.getTime() + one_hour);
+            }
+        }
 
     include ../partials/footer.pug
