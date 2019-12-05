@@ -10,11 +10,15 @@
 
 th {
     padding: 10px;
-    border: 1px solid #777777;
     text-align: left;
 }
 
 th.hours {
     font-style: italic;
     font-size: .8em;
+    border: 1px solid #777777;
+}
+
+th.days {
+    border: 1px solid #777777;
 }
