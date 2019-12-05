@@ -3,7 +3,9 @@ include ../partials/header.pug
 
 body
     if display_data
-        - var entry_count = display_data.length;
+        -
+            var entry_count = display_data.length;
+            console.log("Entry count: ", entry_count);
     script(type='text/javascript').
         var display_location = {
             id: '#{display_location.id}',
