@@ -59,7 +59,7 @@ body
 
                             if (location.volume) {
                                 if (location.volume < QUIET_CUTOFF) {
-                                    status_class = 'color: #00FF00;';
+                                    status_class = 'color: #0000FF;';
                                     status_message = 'Quiet';
                                 }
                                 else if (location.volume > BUSY_CUTOFF) {
@@ -67,7 +67,7 @@ body
                                     status_message = 'Busy';
                                 }
                                 else {
-                                    status_class = 'color: #FFFF00;';
+                                    status_class = 'color: #FF00FF;';
                                     status_message = 'Normal';
                                 }
                             }
