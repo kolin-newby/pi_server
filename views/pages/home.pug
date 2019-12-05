@@ -46,7 +46,7 @@ body
 
                         button(type='submit', name='location', value=location.id) #{location.name}
                         | &nbsp : &nbsp
-                        span(style=status[0]) #{status[1]}
+                        span(id=location.id, style=status[0]) #{status[1]}
                         br
 
     include ../partials/footer.pug
