@@ -10,7 +10,7 @@ body
             name: '#{display_location.name}',
             hours: '#{display_location.hours}'
         };
-        var display_table = #{JSON.stringify(display_data)};
+        var display_table = '#{display_data}';
 
         console.log(display_location);
         console.log(display_data);
