@@ -43,7 +43,7 @@ body
 
                             var status = [status_class, status_message];
 
-                        button(type='submit', name='location', value=location.name) #{location.name}
+                        button(type='submit', name='location', value=location.id) #{location.name}
                         | &nbsp : &nbsp
                         span(style=status[0]) #{status[1]}
                         br
@@ -259,6 +259,5 @@ body
                         td#Sat9pm
                         td#Sat10pm
                         td#Sat11pm
-                
 
     include ../partials/footer.pug
