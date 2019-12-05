@@ -2,104 +2,6 @@
 include ../partials/header.pug
 
 body
-    if display_data
-        - var entry_count = display_data.length;
-    script(type='text/javascript').
-        var display_location = {
-            id: '#{display_location.id}',
-            name: '#{display_location.name}',
-            hours: '#{display_location.hours}'
-        };
-        /*var display_data = {};
-        for (var index = 0; index < entry_count; index++) {
-            display_data[index] = {
-                volume: '#{display_data[index].volume}',
-                time: '#{display_data[index].time}'
-            };
-        }*/
-
-        console.log(display_location);
-        console.log(display_data);
-        /*
-        if (display_location && display_data) {
-            alert('working');
-            const one_hour = 60 * 60 * 1000;
-            var current_date = new Date(Date.now());
-            console.log("Current Date: ", current_date.toUTCString());
-            var thisWeek = new Date(current_date.getFullYear(), current_date.getMonth(), current_date.getDate() - current_date.getDay(), 0, 0, 0, 0);
-            console.log("Beginning of this week: ", thisWeek.toUTCString());
-            var one_week_past = new Date(thisWeek.getTime());
-            one_week_past.setDate(thisWeek.getDate() - 7);
-            var two_week_past = new Date(thisWeek.getTime());
-            two_week_past.setDate(thisWeek.getDate() - 14);
-            console.log("Beginning of 1 week past: ", one_week_past.toUTCString());
-            console.log("Beginning of 2 weeks past: ", two_week_past.toUTCString());
-
-            var table = document.getElementById('display_table');
-            var data_counter1 = 0, data_counter2 = 0;
-            var data_date = new Date();
-            var avg_volume = 0;
-
-            const min_volume = 100;
-            const max_volume = 300;
-            const white_volume = (min_volume + max_volume) / 2;
-            const interval = (max_volume - min_volume) / 32;
-            const hex_values = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'];
-
-            var color_value_index, color;
-
-            for (var row in table)
-            {
-                for (var cell in row)
-                {
-                    var one_week_past_volume;
-                    var two_week_past_volume;
-                    
-                    data_date = new Date(display_data[data_counter1]);
-                    while (data_date < one_week_past) {
-                        data_counter1++;
-                        data_date = new Date(display_data[data_counter1]);
-                    }
-                    one_week_past_volume = (data_date < one_week_past + one_hour) ? display_data[data_counter1] : null;
-
-                    data_date = new Date(display_data[data_counter2]);
-                    while (data_date < two_week_past) {
-                        data_counter2++;
-                        data_date = new Date(display_data[data_counter2]);
-                    }
-                    two_week_past_volume = (data_date < two_week_past + one_hour) ? display_data[data_counter2] : null;
-
-                    if (one_week_past_volume && two_week_past_volume) {
-                        avg_volume = (one_week_past_volume + two_week_past_volume) / 2;
-                    }
-                    else if (one_week_past_volume) {
-                        avg_volume = one_week_past_volume;
-                    }
-                    else if (two_week_past_volume) {
-                        avg_volume = two_week_past_volume;
-                    }
-                    else {
-                        avg_volume = white_volume;
-                    }
-
-                    color = '#FFFFFF';
-
-                    if (avg_volume < white_volume){
-                        color_value_index = parseInt((avg_volume - min_volume) / interval);
-                        color = '#' + hex_values[color_value_index] + hex_values[color_value_index] + 'FF' + hex_values[color_value_index] + hex_values[color_value_index];
-                    }
-                    else if (avg_volume > white_volume){
-                        color_value_index = parseInt((max_volume - avg_volume) / interval);
-                        color = '#FF' + hex_values[color_value_index] + hex_values[color_value_index] + hex_values[color_value_index] + hex_values[color_value_index];
-                    }
-
-                    cell.style.backgroundColor = color;
-
-                    one_week_past.setTime(one_week_past.getTime() + one_hour);
-                    two_week_past.setTime(two_week_past.getTime() + one_hour);
-                }
-            }
-        }*/
     div.container
         div.jumbotron
             h1 Traffic on Campus
@@ -149,38 +51,39 @@ body
             br
             if display_location && display_data
                 - console.log(display_location);
-                - console.log(display_data[0]);
+                - console.log(display_data);
+                - console.log(display_data.length);
                 h4 Weekly Averages for #{display_location.name}
                 br
-                table#display_table
+                table#display_table.display_table
                     tr
                         th
-                        th 12am
-                        th 1am
-                        th 2am
-                        th 3am
-                        th 4am
-                        th 5am
-                        th 6am
-                        th 7am
-                        th 8am
-                        th 9am
-                        th 10am
-                        th 11am
-                        th 12pm
-                        th 1pm
-                        th 2pm
-                        th 3pm
-                        th 4pm
-                        th 5pm
-                        th 6pm
-                        th 7pm
-                        th 8pm
-                        th 9pm
-                        th 10pm
-                        th 11pm
+                        th.hours 12am
+                        th.hours 1am
+                        th.hours 2am
+                        th.hours 3am
+                        th.hours 4am
+                        th.hours 5am
+                        th.hours 6am
+                        th.hours 7am
+                        th.hours 8am
+                        th.hours 9am
+                        th.hours 10am
+                        th.hours 11am
+                        th.hours 12pm
+                        th.hours 1pm
+                        th.hours 2pm
+                        th.hours 3pm
+                        th.hours 4pm
+                        th.hours 5pm
+                        th.hours 6pm
+                        th.hours 7pm
+                        th.hours 8pm
+                        th.hours 9pm
+                        th.hours 10pm
+                        th.hours 11pm
                     tr#Sun
-                        th Sunday
+                        th.days Sunday
                         td#Sun12am
                         td#Sun1am
                         td#Sun2am
@@ -206,7 +109,7 @@ body
                         td#Sun10pm
                         td#Sun11pm
                     tr#Mon
-                        th Monday
+                        th.days Monday
                         td#Mon12am
                         td#Mon1am
                         td#Mon2am
@@ -232,7 +135,7 @@ body
                         td#Mon10pm
                         td#Mon11pm
                     tr#Tue
-                        th Tuesday
+                        th.days Tuesday
                         td#Tue12am
                         td#Tue1am
                         td#Tue2am
@@ -258,7 +161,7 @@ body
                         td#Tue10pm
                         td#Tue11pm
                     tr#Wed
-                        th Wednesday
+                        th.days Wednesday
                         td#Wed12am
                         td#Wed1am
                         td#Wed2am
@@ -284,7 +187,7 @@ body
                         td#Wed10pm
                         td#Wed11pm
                     tr#Thu
-                        th Thursday
+                        th.days Thursday
                         td#Thu12am
                         td#Thu1am
                         td#Thu2am
@@ -310,7 +213,7 @@ body
                         td#Thu10pm
                         td#Thu11pm
                     tr#Fri
-                        th Friday
+                        th.days Friday
                         td#Fri12am
                         td#Fri1am
                         td#Fri2am
@@ -336,7 +239,7 @@ body
                         td#Fri10pm
                         td#Fri11pm
                     tr#Sat
-                        th Saturday
+                        th.days Saturday
                         td#Sat12am
                         td#Sat1am
                         td#Sat2am
@@ -362,6 +265,105 @@ body
                         td#Sat10pm
                         td#Sat11pm
                 script(type='text/javascript').
-                    //alert('also kinda working');
+                    var display_location = {
+                        id: '#{display_location.id}',
+                        name: '#{display_location.name}',
+                        hours: '#{display_location.hours}'
+                    };
+                    var display_data = [];
+                    for (var index in !{JSON.stringify(display_data)}) {
+                        var entry = {
+                            volume: !{JSON.stringify(display_data)}[index].volume,
+                            time: !{JSON.stringify(display_data)}[index].time
+                        };
+                        display_data.push(entry);
+                    }
+
+                    console.log(display_location);
+                    console.log(display_data);
+                    
+                    if (display_location && display_data)
+                    {
+                        const one_hour = 60 * 60 * 1000;
+                        var current_date = new Date(Date.now());
+                        console.log("Current Date: ", current_date.toUTCString());
+                        var thisWeek = new Date(current_date.getFullYear(), current_date.getMonth(), current_date.getDate() - current_date.getDay(), -7, 0, 0, 0);
+                        console.log("Beginning of this week: ", thisWeek.toUTCString());
+                        var one_week_past = new Date(thisWeek.getTime());
+                        one_week_past.setDate(thisWeek.getDate() - 7);
+                        var two_week_past = new Date(thisWeek.getTime());
+                        two_week_past.setDate(thisWeek.getDate() - 14);
+                        console.log("Beginning of 1 week past: ", one_week_past.toUTCString());
+                        console.log("Beginning of 2 weeks past: ", two_week_past.toUTCString());
+
+                        var table = document.getElementById('display_table');
+                        var data_counter1 = 0, data_counter2 = 0;
+                        var data_date = new Date();
+                        var avg_volume = 0;
+
+                        const min_volume = 100;
+                        const max_volume = 300;
+                        const white_volume = (min_volume + max_volume) / 2;
+                        const interval = (max_volume - min_volume) / 32;
+                        const hex_values = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'];
+
+                        var color_value_index, color;
+
+                        for (var i = 1, row; row = table.rows[i]; i++)
+                        {
+                            for (var j = 1, cell; cell = row.cells[j]; j++)
+                            {
+                                console.log('Cell: ', cell);
+                                
+                                var one_week_past_volume;
+                                var two_week_past_volume;
+                                
+                                data_date = new Date(display_data[data_counter1].time);
+                                while (data_date < one_week_past) {
+                                    data_counter1++;
+                                    data_date = new Date(display_data[data_counter1].time);
+                                }
+                                one_week_past.setTime(one_week_past.getTime() + one_hour);
+                                one_week_past_volume = (data_date < one_week_past) ? display_data[data_counter1].volume : null;
+                                console.log('1 Week Volume: ', one_week_past_volume);
+
+                                data_date = new Date(display_data[data_counter2].time);
+                                while (data_date < two_week_past) {
+                                    data_counter2++;
+                                    data_date = new Date(display_data[data_counter2].time);
+                                }
+                                two_week_past.setTime(two_week_past.getTime() + one_hour);
+                                two_week_past_volume = (data_date < two_week_past) ? display_data[data_counter2].volume : null;
+                                console.log('2 Week Volume: ', two_week_past_volume);
+
+                                if (one_week_past_volume && two_week_past_volume) {
+                                    avg_volume = (one_week_past_volume + two_week_past_volume) / 2;
+                                }
+                                else if (one_week_past_volume) {
+                                    avg_volume = one_week_past_volume;
+                                }
+                                else if (two_week_past_volume) {
+                                    avg_volume = two_week_past_volume;
+                                }
+                                else {
+                                    avg_volume = white_volume;
+                                }
+                                console.log('Avg Volume: ', avg_volume);
+
+                                color = '#FFFFFF';
+
+                                if (avg_volume < white_volume){
+                                    color_value_index = parseInt((avg_volume - min_volume) / interval);
+                                    color = '#' + hex_values[color_value_index] + hex_values[color_value_index] + 'FF' + hex_values[color_value_index] + hex_values[color_value_index];
+                                }
+                                else if (avg_volume > white_volume){
+                                    color_value_index = parseInt((max_volume - avg_volume) / interval);
+                                    color = '#FF' + hex_values[color_value_index] + hex_values[color_value_index] + hex_values[color_value_index] + hex_values[color_value_index];
+                                }
+                                console.log('Color: ', color);
+                                cell.style.backgroundColor = color;
+                            }
+                        }
+                    }
 
     include ../partials/footer.pug
