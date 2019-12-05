@@ -6,8 +6,9 @@ body
         - console.log(display_location);
     script(type='text/javascript').
         var display_location = {
+            id: '#{display_location.id}',
             name: '#{display_location.name}',
-
+            hours: '#{display_location.hours}'
         };
         var display_table = !{JSON.stringify(display_data)};
 
