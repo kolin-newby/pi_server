@@ -297,7 +297,6 @@ body
                         console.log("Beginning of 2 weeks past: ", two_week_past.toUTCString());
 
                         var table = document.getElementById('display_table');
-                        console.log(document);
                         var data_counter1 = 0, data_counter2 = 0;
                         var data_date = new Date();
                         var avg_volume = 0;
@@ -322,14 +321,14 @@ body
                                 var two_week_past_volume;
                                 
                                 data_date = new Date(display_data[data_counter1].time);
-                                console.log('data date 1: ', data_date);
+                                console.log('Data Date 1: ', data_date);
                                 while (data_date < one_week_past) {
                                     data_counter1++;
                                     data_date = new Date(display_data[data_counter1].time);
                                     console.log('1: ', data_counter1, data_date);
                                 }
                                 one_week_past_volume = (data_date < one_week_past + one_hour) ? display_data[data_counter1].volume : null;
-                                console.log('1 week volume: ', one_week_past_volume);
+                                console.log('1 Week Volume: ', one_week_past_volume);
 
                                 data_date = new Date(display_data[data_counter2].time);
                                 while (data_date < two_week_past) {
@@ -338,7 +337,7 @@ body
                                     console.log('2: ', data_counter2, data_date);
                                 }
                                 two_week_past_volume = (data_date < two_week_past + one_hour) ? display_data[data_counter2].volume : null;
-                                console.log('2 week volume: ', two_week_past_volume);
+                                console.log('2 Week Volume: ', two_week_past_volume);
 
                                 if (one_week_past_volume && two_week_past_volume) {
                                     avg_volume = (one_week_past_volume + two_week_past_volume) / 2;
@@ -352,7 +351,7 @@ body
                                 else {
                                     avg_volume = white_volume;
                                 }
-                                console.log('avg volume: ', avg_volume);
+                                console.log('Avg Volume: ', avg_volume);
 
                                 color = '#FFFFFF';
 
@@ -364,14 +363,14 @@ body
                                     color_value_index = parseInt((max_volume - avg_volume) / interval);
                                     color = '#FF' + hex_values[color_value_index] + hex_values[color_value_index] + hex_values[color_value_index] + hex_values[color_value_index];
                                 }
-                                console.log('color: ', color);
+                                console.log('Color: ', color);
                                 cell.style.backgroundColor = color;
 
                                 one_week_past.setTime(one_week_past.getTime() + one_hour);
                                 two_week_past.setTime(two_week_past.getTime() + one_hour);
 
-                                console.log('1 week past: ', one_week_past);
-                                console.log('2 week past: ', two_week_past);
+                                console.log('1 Week Past: ', one_week_past);
+                                console.log('2 Week Past: ', two_week_past);
                             }
                         }
                     }
