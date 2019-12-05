@@ -36,7 +36,7 @@ app.get('/', function(req, res) {
 	var query = "SELECT DISTINCT ON (l.loc_id) l.loc_id AS id, l.loc_desc AS name, ";
 	query += "l.loc_hours AS hours, d.volume_db AS volume, d.time AS time ";
 	query += "FROM locations l LEFT JOIN data d ON d.loc_id = l.loc_id ";
-	query += "ORDER BY l.loc_desc, d.time DESC;";
+	query += "ORDER BY l.loc_id, d.time DESC;";
 	console.log(query);
 	db.any(query)
 		.then(function (location_status) {
