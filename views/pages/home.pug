@@ -48,6 +48,7 @@ body
                         span(style=status[0]) #{status[1]}
                         br
             if display_location && display_data
+                - console.log(display_location);
                 - console.log(display_location.name);
                 - console.log(display_data);
                 h4 Weekly Averages for #{display_location.name}
