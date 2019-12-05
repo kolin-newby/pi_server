@@ -13,11 +13,8 @@ body
                 hours: '#{display_location.hours}'
             };
             var display_data = [];
-            for (var entry in #{JSON.stringify(display_data)}) {
-                display_data.push({
-                    volume: entry.volume,
-                    time: entry.time
-                });
+            for (var entry in !{JSON.stringify(display_data)}) {
+                display_data.push(entry.volume);
             }
 
             console.log(#{entry_count});
