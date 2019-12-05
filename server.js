@@ -71,7 +71,7 @@ app.post('/select_location', function(req, res) {
 	location_query += "FROM locations WHERE loc_id = '" + location_to_view + "';";
 	var data_query = "SELECT volume_db AS volume, time FROM data ";
 	data_query += "WHERE loc_id = '" + location_to_view;
-	data_query += "' WHERE time > (NOW() - interval '3 weeks') ";
+	data_query += "' AND time > (NOW() - interval '3 weeks') ";
 	data_query += "ORDER BY time ASC;";
 	//console.log(location_query, "\n");
 	console.log(data_query, "\n");
