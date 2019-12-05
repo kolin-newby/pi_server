@@ -11,12 +11,9 @@ body
             form(method='POST', action='/select_location')
                 if data
                     each location in data
-                        if location.volume
-                            script.
-                                var status = getStatus(status_class, status_message);
                         button(type='submit', name='location', value=location.id) #{location.name}
                         | &nbsp : &nbsp
-                        span(style=status[0]) #{status[1]}
+                        span(style=status[location.id][0]) #{status[location.id][1]}
                         br
 
     include ../partials/footer.pug
