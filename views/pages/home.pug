@@ -328,6 +328,7 @@ body
                                     console.log('1: ', data_counter1, data_date);
                                 }
                                 one_week_past_volume = (data_date < one_week_past + one_hour) ? display_data[data_counter1].volume : null;
+                                console.log(one_week_past + one_hour);
                                 console.log('1 Week Volume: ', one_week_past_volume);
 
                                 data_date = new Date(display_data[data_counter2].time);
