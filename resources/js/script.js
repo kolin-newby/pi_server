@@ -1,39 +1,23 @@
 // script.js
 
-const QUIET_CUTOFF = 100;
-const BUSY_CUTOFF = 200;
+const min_volume = 100;
+const max_volume = 300;
+const white_volume = (min_volume + max_volume) / 2;
+const interval = (max_volume - min_volume) / 32;
+const hex_values = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'];
 
-var getStatus = function (volume, hours) {
-    
-    console.log("script.js is connected");
-    
-    var status_class = 'color: black;';
-    var status_message = 'No Data';
+var volume = volume_for_cell;
 
-    // if closed()
+var color_value_index;
+var color = '#FFFFFF';
 
-    if (volume) {
-        if (volume < QUIET_CUTOFF) {
-            status_class = 'color: green;';
-            status_message = 'Quiet';
-        }
-        else if (volume > BUSY_CUTOFF) {
-            status_class = 'color: red;';
-            status_message = 'Busy';
-        }
-        else {
-            status_class = 'color: yellow;';
-            status_message = 'Normal';
-        }
-    }
-
-    console.log("Class: "+status_class);
-    console.log("Message: "+status_message);
-
-    return [status_class, status_message];
-};
-
-var testScript = function() {
-    console.log("Script is working");
-    return ;
+if (volume < white_volume)
+{
+    color_value_index = parseInt((volume - min_volume) / interval);
+    color = '#' + hex_values[color_value_index] + hex_values[color_value_index] + 'FF' + hex_values[color_value_index] + hex_values[color_value_index];
+}
+else if (volume > white_volume)
+{
+    color_value_index = parseInt((max_volume - volume) / interval);
+    color = '#FF' + hex_values[color_value_index] + hex_values[color_value_index] + hex_values[color_value_index] + hex_values[color_value_index];
 }
