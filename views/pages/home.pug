@@ -14,10 +14,7 @@ body
             };
             var display_data = [];
             for (var index = 0; index < #{entry_count}-10; index++) {
-                var entry = {
-                    volume: '#{display_data[index].volume}',
-                    time: '#{display_data[index].time}'
-                };
+                var entry = '#{display_data[index]}';
                 console.log(entry);
                 display_data.push(entry);
             }
