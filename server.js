@@ -88,7 +88,7 @@ app.post('/select_location', function(req, res) {
 		res.render('pages/home', {
 			page_title: 'Home',
 			data: info[0],
-			display_location: info[1],
+			display_location: info[1][0],
 			display_data: info[2]
 		})
 	})
