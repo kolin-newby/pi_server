@@ -86,7 +86,6 @@ app.post('/select_location', function(req, res) {
 });
 
 // location page
-/*
 app.get('/location', function(req, res) {
 	var location_query = "SELECT loc_id AS id, loc_desc AS name, loc_hours AS hours ";
 	location_query += "FROM locations WHERE loc_id = " + location_to_view + ";";
@@ -114,7 +113,7 @@ app.get('/location', function(req, res) {
 		})
 	})
 });
-*/
+
 var port = 2048;
 app.listen(port);
 console.log('listening on port ' + port);
