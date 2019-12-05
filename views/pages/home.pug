@@ -12,7 +12,13 @@ body
                 name: '#{display_location.name}',
                 hours: '#{display_location.hours}'
             };
-            var display_data = '#{display_data}';
+            var display_data = [];
+            for (var entry in '#{display_data}') {
+                display_data.push({
+                    volume: entry.volume,
+                    time: entry.time
+                });
+            }
 
             console.log(#{entry_count});
             console.log(display_location);
