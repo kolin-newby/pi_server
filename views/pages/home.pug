@@ -4,6 +4,7 @@ include ../partials/header.pug
 body
     script(type='text/javascript').
         if (display_location && display_data) {
+            alert('working');
             const one_hour = 60 * 60 * 1000;
             var current_date = new Date(Date.now());
             console.log("Current Date: ", current_date.toUTCString());
