@@ -321,22 +321,24 @@ body
                                 var one_week_past_volume;
                                 var two_week_past_volume;
                                 
-                                data_date = new Date(display_data[data_counter1]);
-                                console.log('data date 1: ',data_date);
+                                data_date = new Date(display_data[data_counter1].time);
+                                console.log('data date 1: ', data_date);
                                 while (data_date < one_week_past) {
                                     data_counter1++;
-                                    data_date = new Date(display_data[data_counter1]);
+                                    data_date = new Date(display_data[data_counter1].time);
                                     console.log('1: ', data_counter1, data_date);
                                 }
-                                one_week_past_volume = (data_date < one_week_past + one_hour) ? display_data[data_counter1] : null;
+                                one_week_past_volume = (data_date < one_week_past + one_hour) ? display_data[data_counter1].volume : null;
+                                console.log('1 week volume: ', one_week_past_volume);
 
-                                data_date = new Date(display_data[data_counter2]);
+                                data_date = new Date(display_data[data_counter2].time);
                                 while (data_date < two_week_past) {
                                     data_counter2++;
-                                    data_date = new Date(display_data[data_counter2]);
+                                    data_date = new Date(display_data[data_counter2].time);
                                     console.log('2: ', data_counter2, data_date);
                                 }
-                                two_week_past_volume = (data_date < two_week_past + one_hour) ? display_data[data_counter2] : null;
+                                two_week_past_volume = (data_date < two_week_past + one_hour) ? display_data[data_counter2].volume : null;
+                                console.log('2 week volume: ', two_week_past_volume);
 
                                 if (one_week_past_volume && two_week_past_volume) {
                                     avg_volume = (one_week_past_volume + two_week_past_volume) / 2;
