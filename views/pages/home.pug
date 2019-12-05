@@ -2,6 +2,8 @@
 include ../partials/header.pug
 
 body
+    script(type='text/javascript').
+        alert("Working");
     div.container
         div.jumbotron
             h1 Traffic on Campus
@@ -325,13 +327,11 @@ body
 
                             color = '#FFFFFF';
 
-                            if (avg_volume < white_volume)
-                            {
+                            if (avg_volume < white_volume){
                                 color_value_index = parseInt((avg_volume - min_volume) / interval);
                                 color = '#' + hex_values[color_value_index] + hex_values[color_value_index] + 'FF' + hex_values[color_value_index] + hex_values[color_value_index];
                             }
-                            else if (avg_volume > white_volume)
-                            {
+                            else if (avg_volume > white_volume){
                                 color_value_index = parseInt((max_volume - avg_volume) / interval);
                                 color = '#FF' + hex_values[color_value_index] + hex_values[color_value_index] + hex_values[color_value_index] + hex_values[color_value_index];
                             }
