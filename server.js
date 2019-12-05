@@ -67,7 +67,7 @@ app.post('/select_location', function(req, res) {
 	query += "l.loc_hours AS hours, d.volume_db AS volume, d.time AS time ";
 	query += "FROM locations l LEFT JOIN data d ON d.loc_id = l.loc_id ";
 	query += "ORDER BY l.loc_id, d.time DESC;";
-	var location_to_view = req.body.location;
+	var location_to_view = req.body.location.toUpperCase();
 	var location_query = "SELECT loc_id AS id, loc_desc AS name, loc_hours AS hours ";
 	location_query += "FROM locations WHERE loc_id = " + location_to_view + ";";
 	var data_query = "SELECT d.volume_db AS volume, d.time FROM data d ";
