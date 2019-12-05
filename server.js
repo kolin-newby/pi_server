@@ -70,7 +70,7 @@ app.post('/select_location', function(req, res) {
 	var location_query = "SELECT loc_id AS id, loc_desc AS name, loc_hours AS hours ";
 	location_query += "FROM locations WHERE loc_id = '" + location_to_view + "';";
 	var data_query = "SELECT d.volume_db AS volume, d.time FROM data d ";
-	data_query += "FULL JOIN locations l ON d.loc_id = '" + location_to_view;
+	data_query += "LEFT JOIN locations l ON d.loc_id = '" + location_to_view;
 	data_query += "' WHERE d.time > (NOW() - interval '3 weeks') ";
 	data_query += "ORDER BY d.time ASC;";
 	//console.log(location_query, "\n");
