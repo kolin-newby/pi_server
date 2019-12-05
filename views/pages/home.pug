@@ -47,10 +47,10 @@ body
                 if data
                     each location in data
                         script.
-                            let status = getStatus(location.volume, location.hours);
+                            var status = getStatus(location.volume, location.hours);
                         button(type='submit', name='location', value=location.name) #{location.name}
                         | &nbsp : &nbsp
-                        span(style=status[0]) #{status[1]}
+                        span(style=#{status[0]}) #{status[1]}
                         br
 
     include ../partials/footer.pug
