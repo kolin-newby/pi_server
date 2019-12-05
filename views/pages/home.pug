@@ -4,6 +4,7 @@ include ../partials/header.pug
 body
     script(type='text/javascript').
         //alert('kinda working');
+        console.log('still kinda working');
         if (display_location != null && display_data != null) {
             alert('working');
             const one_hour = 60 * 60 * 1000;
@@ -345,6 +346,6 @@ body
                         td#Sat10pm
                         td#Sat11pm
                 script(type='text/javascript').
-                    alert('also kinda working');
+                    //alert('also kinda working');
 
     include ../partials/footer.pug
