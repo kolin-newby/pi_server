@@ -20,24 +20,11 @@ body
                 };
                 display_data.push(entry);
             }
-            console.log(!{JSON.stringify(display_data)}[0]);
 
             console.log(#{entry_count});
             console.log(display_location);
             console.log(display_data);
             
-            var first_entry = {
-                volume: '#{display_data[0].volume}',
-                time: '#{display_data[0].time}'
-            };
-            var second_entry = {
-                volume: '#{display_data[1].volume}',
-                time: '#{display_data[1].time}'
-            }
-
-            console.log(first_entry);
-            console.log(second_entry);
-            /*
             if (display_location && display_data) {
                 alert('working');
                 const one_hour = 60 * 60 * 1000;
@@ -116,7 +103,7 @@ body
                         two_week_past.setTime(two_week_past.getTime() + one_hour);
                     }
                 }
-            }*/
+            }
     div.container
         div.jumbotron
             h1 Traffic on Campus
