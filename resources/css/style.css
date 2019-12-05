@@ -16,9 +16,9 @@ th {
 th.hours {
     font-style: italic;
     font-size: .8em;
-    border: 1px solid #777777;
+    border: 1px solid #AAAAAA;
 }
 
 th.days {
-    border: 1px solid #777777;
+    border: 1px solid #AAAAAA;
 }
