@@ -47,12 +47,10 @@ body
                         | &nbsp : &nbsp
                         span(style=status[0]) #{status[1]}
                         br
-                        br
             br
             br
             if display_location && display_data
                 - console.log(display_location);
-                - console.log(display_location.name);
                 - console.log(display_data);
                 h4 Weekly Averages for #{display_location.name}
                 br
@@ -265,5 +263,9 @@ body
                         td#Sat9pm
                         td#Sat10pm
                         td#Sat11pm
+            -
+                var currentDate = Date.now();
+                var thisWeek = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() - currentDate.getDay(), 0, 0, 0, 0);
+                console.log(thisWeek);
 
     include ../partials/footer.pug
