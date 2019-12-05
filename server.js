@@ -48,8 +48,7 @@ app.get('/', function(req, res) {
 			console.log(location_status);
 			res.render('pages/home', {
 				page_title: 'Home',
-				data: location_status,
-				status: statuses
+				data: location_status
 			})
 		})
 		.catch(function (err) {

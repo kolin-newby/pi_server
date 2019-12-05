@@ -49,7 +49,7 @@ body
                         - let status = getStatus(location.volume, location.hours);
                         button(type='submit', name='location', value=location.name) #{location.name}
                         | &nbsp : &nbsp
-                        span(style=status[location.id][0]) #{status[location.id][1]}
+                        span(style=status[0]) #{status[1]}
                         br
 
     include ../partials/footer.pug
