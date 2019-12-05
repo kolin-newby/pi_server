@@ -13,7 +13,7 @@ body
                 hours: '#{display_location.hours}'
             };
             var display_data = [];
-            for (var entry in '#{display_data}') {
+            for (var entry in #{JSON.stringigfy(display_data)}) {
                 display_data.push({
                     volume: entry.volume,
                     time: entry.time
