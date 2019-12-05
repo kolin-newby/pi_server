@@ -269,11 +269,11 @@ body
                 var thisWeek = new Date(current_date.getFullYear(), current_date.getMonth(), current_date.getDate() - current_date.getDay(), 0, 0, 0, 0);
                 console.log("Beginning of this week: ", thisWeek.toUTCString());
                 var one_week_past = new Date();
-                one_week_past.setDate(thisWeek.getDate() - 7);
                 one_week_past.setTime(0);
+                one_week_past.setDate(thisWeek.getDate() - 7);
                 var two_week_past = new Date();
-                two_week_past.setDate(thisWeek.getDate() - 14);
                 two_week_past.setTime(0);
+                two_week_past.setDate(thisWeek.getDate() - 14);
                 console.log("Beginning of 1 week past: ", one_week_past.toUTCString());
                 console.log("Beginning of 2 weeks past: ", two_week_past.toUTCString());
 
