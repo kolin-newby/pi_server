@@ -12,9 +12,11 @@ body
                 name: '#{display_location.name}',
                 hours: '#{display_location.hours}'
             };
-            for (var index, entry in !{JSON.stringify(display_data)}) {
+            for (var index in !{JSON.stringify(display_data)}) {
                 console.log(entry);
             }
+
+            console.log(!{JSON.stringify(display_data)}[0]);
 
             console.log(#{entry_count});
             console.log(display_location);
