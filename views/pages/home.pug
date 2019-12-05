@@ -59,6 +59,7 @@ body
                         while (data_date < one_week_past) {
                             data_counter1++;
                             data_date = new Date(display_data[data_counter1]);
+                            console.log('1: ', data_counter1, data_date);
                         }
                         one_week_past_volume = (data_date < one_week_past + one_hour) ? display_data[data_counter1] : null;
 
@@ -66,6 +67,7 @@ body
                         while (data_date < two_week_past) {
                             data_counter2++;
                             data_date = new Date(display_data[data_counter2]);
+                            console.log('2: ', data_counter2, data_date);
                         }
                         two_week_past_volume = (data_date < two_week_past + one_hour) ? display_data[data_counter2] : null;
 
@@ -81,6 +83,7 @@ body
                         else {
                             avg_volume = white_volume;
                         }
+                        console.log('avg volume: ', avg_volume);
 
                         color = '#FFFFFF';
 
@@ -92,11 +95,14 @@ body
                             color_value_index = parseInt((max_volume - avg_volume) / interval);
                             color = '#FF' + hex_values[color_value_index] + hex_values[color_value_index] + hex_values[color_value_index] + hex_values[color_value_index];
                         }
-
+                        console.log('color: ', color);
                         cell.style.backgroundColor = color;
 
                         one_week_past.setTime(one_week_past.getTime() + one_hour);
                         two_week_past.setTime(two_week_past.getTime() + one_hour);
+
+                        console.log('1 week past: ', one_week_past);
+                        console.log('2 week past: ', two_week_past);
                     }
                 }
             }
