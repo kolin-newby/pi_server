@@ -37,10 +37,10 @@ app.get('/', function(req, res) {
 	query += "l.loc_hours AS hours, d.volume_db AS volume, d.time AS time ";
 	query += "FROM locations l LEFT JOIN data d ON d.loc_id = l.loc_id ";
 	query += "ORDER BY l.loc_id, d.time DESC;";
-	console.log(query);
+	//console.log(query);
 	db.any(query)
 		.then(function (location_status) {
-			console.log(location_status);
+			//console.log(location_status);
 			res.render('pages/home', {
 				page_title: 'Home',
 				data: location_status,
@@ -66,15 +66,15 @@ app.post('/select_location', function(req, res) {
 	query += "FROM locations l LEFT JOIN data d ON d.loc_id = l.loc_id ";
 	query += "ORDER BY l.loc_id, d.time DESC;";
 	var location_to_view = req.body.location;
-	console.log("Location: ", location_to_view, "\n");
+	//console.log("Location: ", location_to_view, "\n");
 	var location_query = "SELECT loc_id AS id, loc_desc AS name, loc_hours AS hours ";
 	location_query += "FROM locations WHERE loc_id = '" + location_to_view + "';";
 	var data_query = "SELECT d.volume_db AS volume, d.time FROM data d ";
 	data_query += "FULL JOIN locations l ON d.loc_id = '" + location_to_view;
 	data_query += "' WHERE d.time > (NOW() - interval '3 weeks') ";
 	data_query += "ORDER BY d.time ASC;";
-	console.log(location_query, "\n");
-	console.log(data_query, "\n");
+	//console.log(location_query, "\n");
+	//console.log(data_query, "\n");
 	db.task('get-everything', task => {
 		return task.batch([
 			task.any(query),
