@@ -2,10 +2,9 @@
 include ../partials/header.pug
 
 body
-    - var entry_count = 0;
     if display_data
         -
-            entry_count = display_data.length;
+            var entry_count = display_data.length;
             console.log("Entry count: ", entry_count);
         script(type='text/javascript').
             alert('still workin');
@@ -14,14 +13,10 @@ body
                 name: '#{display_location.name}',
                 hours: '#{display_location.hours}'
             };
-            var display_data = [];
-            for (var index = 0; index < entry_count; index++) {
-                var entry = {
-                    volume: '#{display_data[index].volume}',
-                    time: '#{display_data[index].time}'
-                };
-                display_data.push(entry);
-            }
+            var display_data = {
+                volume: '#{display_data[0].volume}',
+                time: '#{display_data[0].time}'
+            };
 
             console.log(display_location);
             console.log(display_data);
