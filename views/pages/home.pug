@@ -311,8 +311,6 @@ body
 
                         for (var i = 1, row; row = table.rows[i]; i++)
                         {
-                            console.log('Row: ', row);
-
                             for (var j = 1, cell; cell = row.cells[j]; j++)
                             {
                                 console.log('Cell: ', cell);
@@ -362,7 +360,7 @@ body
                                     color_value_index = parseInt((max_volume - avg_volume) / interval);
                                     color = '#FF' + hex_values[color_value_index] + hex_values[color_value_index] + hex_values[color_value_index] + hex_values[color_value_index];
                                 }
-                                console.log('Color: ', color);
+                                console.log('Color: ', color, '\n');
                                 cell.style.backgroundColor = color;
                             }
                         }
