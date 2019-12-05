@@ -74,7 +74,7 @@ app.get('/', function(req, res) {
 				console.log("Class: "+status_class);
 				console.log("Message: "+status_message);
 
-				status[location.id] = [status_class, status_message];
+				statuses[location.id] = [status_class, status_message];
 			}
 
 			res.render('pages/home', {
