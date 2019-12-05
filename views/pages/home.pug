@@ -22,7 +22,13 @@ body
             console.log(#{entry_count});
             console.log(display_location);
             console.log(display_data);
-            console.log(#{JSON.stringify(display_data[0])});
+            
+            var first_entry = {
+                volume: '#{display_data[0].volume}',
+                time: '#{display_data[0].time}'
+            };
+
+            console.log(first_entry);
             /*
             if (display_location && display_data) {
                 alert('working');
