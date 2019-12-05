@@ -28,9 +28,7 @@ app.set('view engine', 'pug');
 app.use(express.static(__dirname + '/'));
 
 //declare constants
-const REFRESH_INTERVAL = "120 minutes";
-const QUIET_CUTOFF = 100;
-const BUSY_CUTOFF = 200;
+const REFRESH_INTERVAL = "1 hour";
 
 // home page
 app.get('/', function(req, res) {
@@ -74,7 +72,7 @@ app.post('/select_location', function(req, res) {
 	var data_query = "SELECT d.volume_db AS volume, d.time FROM data d ";
 	data_query += "FULL JOIN locations l ON d.loc_id = '" + location_to_view;
 	data_query += "' WHERE d.time > (NOW() - interval '3 weeks') ";
-	data_query += "ORDER BY d.time DESC;";
+	data_query += "ORDER BY d.time ASC;";
 	console.log(location_query, "\n");
 	console.log(data_query, "\n");
 	db.task('get-everything', task => {
@@ -88,7 +86,7 @@ app.post('/select_location', function(req, res) {
 		res.render('pages/home', {
 			page_title: 'Home',
 			data: info[0],
-			display_location: info[1],
+			display_location: info[1][0],
 			display_data: info[2]
 		})
 	})
