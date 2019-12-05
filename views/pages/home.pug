@@ -13,13 +13,6 @@ body
             hours: '#{display_location.hours}'
         };
         var display_data = [];
-        for (var index = 0; index < entry_count; index++) {
-            var entry = {
-                volume: '#{display_data[index].volume}',
-                time: '#{display_data[index].time}'
-            };
-            display_data.push(entry);
-        }
 
         console.log(display_location);
         console.log(display_data);
