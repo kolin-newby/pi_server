@@ -11,11 +11,256 @@ body
             form(method='POST', action='/select_location')
                 if data
                     each location in data
-                        if location.volume
-                            script. let status = getStatus(status_class, status_message);
-                        button(type='submit', name='location', value=location.id) #{location.name}
+                        -
+                            console.log("Location: ", location.name);
+                            console.log("Time: ", location.time);
+
+                            const QUIET_CUTOFF = 100;
+                            const BUSY_CUTOFF = 200;
+                            
+                            var status_class = 'color: black;';
+                            var status_message = 'No Data';
+
+                            // if closed()
+
+                            if (location.volume) {
+                                if (location.volume < QUIET_CUTOFF) {
+                                    status_class = 'color: #0000FF;';
+                                    status_message = 'Quiet';
+                                }
+                                else if (location.volume > BUSY_CUTOFF) {
+                                    status_class = 'color: #FF0000;';
+                                    status_message = 'Busy';
+                                }
+                                else {
+                                    status_class = 'color: #FF00FF;';
+                                    status_message = 'Normal';
+                                }
+                            }
+
+                            console.log("Class: ", status_class);
+                            console.log("Message: ", status_message, "\n");
+
+                            var status = [status_class, status_message];
+
+                        button(type='submit', name='location', value=location.name) #{location.name}
                         | &nbsp : &nbsp
                         span(style=status[0]) #{status[1]}
                         br
+                        -
+                            var d = new Date(location.time);
+                            console.log(d.toUTCString());
+            if display_location && display_data
+                h4 Weekly Averages for #{display_locaton.name}
+                br
+                table
+                    tr
+                        th
+                        th 12am
+                        th 1am
+                        th 2am
+                        th 3am
+                        th 4am
+                        th 5am
+                        th 6am
+                        th 7am
+                        th 8am
+                        th 9am
+                        th 10am
+                        th 11am
+                        th 12pm
+                        th 1pm
+                        th 2pm
+                        th 3pm
+                        th 4pm
+                        th 5pm
+                        th 6pm
+                        th 7pm
+                        th 8pm
+                        th 9pm
+                        th 10pm
+                        th 11pm
+                    tr
+                        th Sunday
+                        td#Sun12am
+                        td#Sun1am
+                        td#Sun2am
+                        td#Sun3am
+                        td#Sun4am
+                        td#Sun5am
+                        td#Sun6am
+                        td#Sun7am
+                        td#Sun8am
+                        td#Sun9am
+                        td#Sun10am
+                        td#Sun11am
+                        td#Sun12pm
+                        td#Sun1pm
+                        td#Sun2pm
+                        td#Sun3pm
+                        td#Sun4pm
+                        td#Sun5pm
+                        td#Sun6pm
+                        td#Sun7pm
+                        td#Sun8pm
+                        td#Sun9pm
+                        td#Sun10pm
+                        td#Sun11pm
+                    tr
+                        th Monday
+                        td#Mon12am
+                        td#Mon1am
+                        td#Mon2am
+                        td#Mon3am
+                        td#Mon4am
+                        td#Mon5am
+                        td#Mon6am
+                        td#Mon7am
+                        td#Mon8am
+                        td#Mon9am
+                        td#Mon10am
+                        td#Mon11am
+                        td#Mon12pm
+                        td#Mon1pm
+                        td#Mon2pm
+                        td#Mon3pm
+                        td#Mon4pm
+                        td#Mon5pm
+                        td#Mon6pm
+                        td#Mon7pm
+                        td#Mon8pm
+                        td#Mon9pm
+                        td#Mon10pm
+                        td#Mon11pm
+                    tr
+                        th Tuesday
+                        td#Tue12am
+                        td#Tue1am
+                        td#Tue2am
+                        td#Tue3am
+                        td#Tue4am
+                        td#Tue5am
+                        td#Tue6am
+                        td#Tue7am
+                        td#Tue8am
+                        td#Tue9am
+                        td#Tue10am
+                        td#Tue11am
+                        td#Tue12pm
+                        td#Tue1pm
+                        td#Tue2pm
+                        td#Tue3pm
+                        td#Tue4pm
+                        td#Tue5pm
+                        td#Tue6pm
+                        td#Tue7pm
+                        td#Tue8pm
+                        td#Tue9pm
+                        td#Tue10pm
+                        td#Tue11pm
+                    tr
+                        th Wednesday
+                        td#Wed12am
+                        td#Wed1am
+                        td#Wed2am
+                        td#Wed3am
+                        td#Wed4am
+                        td#Wed5am
+                        td#Wed6am
+                        td#Wed7am
+                        td#Wed8am
+                        td#Wed9am
+                        td#Wed10am
+                        td#Wed11am
+                        td#Wed12pm
+                        td#Wed1pm
+                        td#Wed2pm
+                        td#Wed3pm
+                        td#Wed4pm
+                        td#Wed5pm
+                        td#Wed6pm
+                        td#Wed7pm
+                        td#Wed8pm
+                        td#Wed9pm
+                        td#Wed10pm
+                        td#Wed11pm
+                    tr
+                        th Thursday
+                        td#Thu12am
+                        td#Thu1am
+                        td#Thu2am
+                        td#Thu3am
+                        td#Thu4am
+                        td#Thu5am
+                        td#Thu6am
+                        td#Thu7am
+                        td#Thu8am
+                        td#Thu9am
+                        td#Thu10am
+                        td#Thu11am
+                        td#Thu12pm
+                        td#Thu1pm
+                        td#Thu2pm
+                        td#Thu3pm
+                        td#Thu4pm
+                        td#Thu5pm
+                        td#Thu6pm
+                        td#Thu7pm
+                        td#Thu8pm
+                        td#Thu9pm
+                        td#Thu10pm
+                        td#Thu11pm
+                    tr
+                        th Friday
+                        td#Fri12am
+                        td#Fri1am
+                        td#Fri2am
+                        td#Fri3am
+                        td#Fri4am
+                        td#Fri5am
+                        td#Fri6am
+                        td#Fri7am
+                        td#Fri8am
+                        td#Fri9am
+                        td#Fri10am
+                        td#Fri11am
+                        td#Fri12pm
+                        td#Fri1pm
+                        td#Fri2pm
+                        td#Fri3pm
+                        td#Fri4pm
+                        td#Fri5pm
+                        td#Fri6pm
+                        td#Fri7pm
+                        td#Fri8pm
+                        td#Fri9pm
+                        td#Fri10pm
+                        td#Fri11pm
+                    tr
+                        th Saturday
+                        td#Sat12am
+                        td#Sat1am
+                        td#Sat2am
+                        td#Sat3am
+                        td#Sat4am
+                        td#Sat5am
+                        td#Sat6am
+                        td#Sat7am
+                        td#Sat8am
+                        td#Sat9am
+                        td#Sat10am
+                        td#Sat11am
+                        td#Sat12pm
+                        td#Sat1pm
+                        td#Sat2pm
+                        td#Sat3pm
+                        td#Sat4pm
+                        td#Sat5pm
+                        td#Sat6pm
+                        td#Sat7pm
+                        td#Sat8pm
+                        td#Sat9pm
+                        td#Sat10pm
+                        td#Sat11pm
 
     include ../partials/footer.pug
