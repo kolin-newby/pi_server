@@ -13,7 +13,6 @@ body
                     each location in data
                         if location.volume
                             - status = getStatus(status_class, status_message);
-
                         button(type='submit', name='location', value=location.id) #{location.name}
                         | &nbsp : &nbsp
                         span(style=status[0]) #{status[1]}
