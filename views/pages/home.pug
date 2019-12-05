@@ -7,7 +7,6 @@ body
             var entry_count = display_data.length;
             console.log("Entry count: ", entry_count);
         script(type='text/javascript').
-            alert('still workin');
             var display_location = {
                 id: '#{display_location.id}',
                 name: '#{display_location.name}',
@@ -19,6 +18,7 @@ body
                     volume: '#{display_data[index].volume}',
                     time: '#{display_data[index].time}'
                 };
+                console.log(entry);
                 display_data.push(entry);
             }
 
