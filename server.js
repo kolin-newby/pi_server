@@ -74,7 +74,7 @@ app.post('/select_location', function(req, res) {
 	var data_query = "SELECT d.volume_db AS volume, d.time FROM data d ";
 	data_query += "FULL JOIN locations l ON d.loc_id = '" + location_to_view;
 	data_query += "' WHERE d.time > (NOW() - interval '3 weeks') ";
-	data_query += "ORDER BY d.time DESC;";
+	data_query += "ORDER BY d.time ASC;";
 	console.log(location_query, "\n");
 	console.log(data_query, "\n");
 	db.task('get-everything', task => {
