@@ -28,9 +28,7 @@ app.set('view engine', 'pug');
 app.use(express.static(__dirname + '/'));
 
 //declare constants
-const REFRESH_INTERVAL = "120 minutes";
-const QUIET_CUTOFF = 100;
-const BUSY_CUTOFF = 200;
+const REFRESH_INTERVAL = "1 hour";
 
 // home page
 app.get('/', function(req, res) {
