@@ -47,7 +47,9 @@ body
                         | &nbsp : &nbsp
                         span(style=status[0]) #{status[1]}
                         br
-            - console.log('2019-12-03T04:56:04.415Z');
+            -
+                var d = new Date(location.time);
+                console.log(d.toUTCString());
             if display_location && display_data
                 h4 Weekly Averages for #{display_locaton.name}
                 br
