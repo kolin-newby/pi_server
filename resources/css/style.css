@@ -4,9 +4,7 @@
     
 }
 
-.display_table {
-    table, th {
+.display_table table th{
         padding: 10px;
         border: 1px solid black;
-    }
 }
