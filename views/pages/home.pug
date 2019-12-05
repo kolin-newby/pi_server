@@ -13,7 +13,7 @@ body
                 hours: '#{display_location.hours}'
             };
             var display_data = [];
-            for (var index = 0; index < #{entry_count}-10; index++) {
+            for (var index = 0; index < #{entry_count}; index++) {
                 var entry = '#{display_data[index]}';
                 console.log(entry);
                 display_data.push(entry);
@@ -22,6 +22,7 @@ body
             console.log(#{entry_count});
             console.log(display_location);
             console.log(display_data);
+            console.log('#{display_data[0]}');
             /*
             if (display_location && display_data) {
                 alert('working');
