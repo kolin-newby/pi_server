@@ -12,14 +12,11 @@ body
                 name: '#{display_location.name}',
                 hours: '#{display_location.hours}'
             };
-            var display_data = [];
-            for (var entry in !{JSON.stringify(display_data)}) {
-                display_data.push(entry);
-            }
+            console.log(!{JSON.stringify(display_data)});
 
             console.log(#{entry_count});
             console.log(display_location);
-            console.log(display_data);
+            //console.log(display_data);
             
             var first_entry = {
                 volume: '#{display_data[0].volume}',
