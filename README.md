@@ -1,7 +1,7 @@
 # pi_server
 server on raspberry pi for traffic_data_app
 
-Sound Traffic Reporting Project - CSCI 3308
+Sound Traffic Reporting Project - CSCI 3308 | Group 111-4
 Bennett Miller, Kolin Newby, Aidan O’Connor, Sam Sly, Ria Thakkar, Yi Wu
 
 The goal of this project is to create software that will collect data on the decibal volume of a given location and display said data
